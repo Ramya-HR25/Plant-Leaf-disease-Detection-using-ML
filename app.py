@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from flask import redirect, url_for
 import tensorflow as tf
 import numpy as np
 from PIL import Image
@@ -9,6 +10,23 @@ import json
 from keras.applications.mobilenet_v2 import preprocess_input
  
 app = Flask(__name__)
+
+# Redirect root to welcome page without modifying existing '/' route definition
+@app.before_request
+def _redirect_root_to_welcome():
+    if request.path == '/' and request.method == 'GET':
+        # Allow static files and avoid interfering with other endpoints
+        return redirect(url_for('welcome'))
+
+# New welcome route
+@app.route('/welcome')
+def welcome():
+    return render_template('welcome.html')
+
+# Dedicated path to reach the original index page
+@app.route('/start')
+def start():
+    return render_template('index.html')
 
 # Load the trained model
 model = tf.keras.models.load_model('plant_disease_model.h5')

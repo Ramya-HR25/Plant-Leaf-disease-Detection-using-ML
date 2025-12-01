@@ -14,6 +14,7 @@ PlantVillage/                # Dataset folders (one per class)
 static/
   css/style.css              # Custom styles
 templates/
+  welcome page.              
   index.html                 # Upload page
   result.html                # Result page
 app.py                       # Flask web app

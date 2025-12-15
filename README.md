@@ -20,6 +20,7 @@ plant-disease-detection/
 ├─ evaluate_model.py
 ├─ move_reliable_images.py
 ├─ move_unreliable_images.py
+├─ PlantVillage/ (not tracked by Git - see Dataset section)
 ├─ README.md
 ├─ requirements.txt
 ├─ train_model.py
@@ -32,6 +33,22 @@ plant-disease-detection/
    ├─ result.html
    └─ welcome.html
 ```
+
+## Dataset
+The PlantVillage dataset is used for training the model. It contains thousands of images of healthy and diseased plant leaves across multiple species. Due to its large size (several GBs), the dataset is not included in this repository and must be downloaded separately.
+
+**Download Instructions:**
+1. Visit the PlantVillage dataset on Kaggle: https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset
+2. Download the dataset
+3. Extract the contents to the `PlantVillage/` directory in your project folder
+
+**Note:** The `PlantVillage/` directory is intentionally excluded from version control via `.gitignore` due to the large size of the dataset.
+
+## Data Preparation Scripts
+The repository includes several utility scripts for organizing the dataset:
+- `create_reliable_from_unreliable.py`: Creates a reliable dataset by filtering out corrupted or low-quality images
+- `move_reliable_images.py`: Moves verified good images to a separate directory
+- `move_unreliable_images.py`: Separates potentially problematic images for manual review
 
 ## Setup
 1. **Clone the repository and navigate to the folder:**
@@ -50,14 +67,8 @@ plant-disease-detection/
    ```bash
    pip install -r requirements.txt
    ```
-4. **Download or prepare the PlantVillage dataset:**
-   - Place all class folders (e.g., `Potato___Early_blight`, `Tomato_healthy`, etc.) inside the `PlantVillage` directory.
-
-## Data Preparation Scripts
-The repository includes several utility scripts for organizing the dataset:
-- `create_reliable_from_unreliable.py`: Creates a reliable dataset by filtering out corrupted or low-quality images
-- `move_reliable_images.py`: Moves verified good images to a separate directory
-- `move_unreliable_images.py`: Separates potentially problematic images for manual review
+4. **Download and prepare the PlantVillage dataset:**
+   - Follow the dataset instructions above to download and extract the dataset to the `PlantVillage/` directory
 
 ## Training the Model
 1. **Edit `train_model.py` if needed (e.g., change epochs, batch size).**
